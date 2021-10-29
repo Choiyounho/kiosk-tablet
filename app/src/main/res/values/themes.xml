@@ -13,4 +13,12 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Widget.Soten.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="chipBackgroundColor">@color/background_filter_chip</item>
+        <item name="android:checkable">true</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>

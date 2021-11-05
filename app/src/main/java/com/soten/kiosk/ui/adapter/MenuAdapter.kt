@@ -10,6 +10,10 @@ import com.soten.kiosk.model.Menu
 
 class MenuAdapter : ListAdapter<Menu, MenuViewHolder>(diffUtil) {
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MenuViewHolder(ItemMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -21,10 +25,11 @@ class MenuAdapter : ListAdapter<Menu, MenuViewHolder>(diffUtil) {
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Menu>() {
             override fun areItemsTheSame(oldItem: Menu, newItem: Menu): Boolean =
-                oldItem.title == newItem.title
+                oldItem.url == newItem.url
 
             override fun areContentsTheSame(oldItem: Menu, newItem: Menu): Boolean =
                 oldItem == newItem
         }
     }
+
 }

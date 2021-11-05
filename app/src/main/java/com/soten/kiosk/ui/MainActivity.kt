@@ -1,6 +1,7 @@
 package com.soten.kiosk.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        bindView()
         observeData()
     }
 
@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.menuListLiveData.observe(this) {
+            bindView()
             menuAdapter.submitList(it)
         }
     }

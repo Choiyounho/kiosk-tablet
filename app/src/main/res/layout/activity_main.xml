@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.soten.kiosk.MenuViewModel" />
+            type="com.soten.kiosk.ui.MenuViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#393939"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <View
             android:layout_width="0dp"
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:onClick="@{() -> viewModel.onSignatureChecked()}"
-                android:text="인쌩 시그니처"
+                android:text="@string/life_signature"
                 android:textColor="@{viewModel.checkedLiveData == 0 ? @color/black : @color/white}" />
 
             <com.google.android.material.chip.Chip
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:onClick="@{() -> viewModel.onMainMenuChecked()}"
-                android:text="인쌩 특별메뉴"
+                android:text="@string/special_menu"
                 android:textColor="@{viewModel.checkedLiveData == 1 ? @color/black : @color/white}" />
 
             <com.google.android.material.chip.Chip
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:onClick="@{() -> viewModel.onAlcoholicChecked()}"
-                android:text="일반 메뉴"
+                android:text="@string/normal_menu"
                 android:textColor="@{viewModel.checkedLiveData == 2 ? @color/black : @color/white}" />
 
             <com.google.android.material.chip.Chip
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:onClick="@{() -> viewModel.onDrinkChecked()}"
-                android:text="과일 메뉴"
+                android:text="@string/fruit_menu"
                 android:textColor="@{viewModel.checkedLiveData == 3 ? @color/black : @color/white}" />
 
             <com.google.android.material.chip.Chip
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:onClick="@{() -> viewModel.onAdditionalMenuChecked()}"
-                android:text="주류"
+                android:text="@string/drinks"
                 android:textColor="@{viewModel.checkedLiveData == 4 ? @color/black : @color/white}" />
 
         </com.google.android.material.chip.ChipGroup>
@@ -135,13 +135,14 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:layout_marginStart="16dp"
-            android:text="인쌩 시그니쳐"
+            android:text="@{viewModel.menuTabLiveData}"
             android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@id/vertical20GuideLine"
             app:layout_constraintTop_toBottomOf="@id/filterChipGroup" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menuRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"

@@ -1,17 +1,20 @@
-package com.soten.kiosk
+package com.soten.kiosk.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
 import com.soten.kiosk.databinding.ActivityMainBinding
+import com.soten.kiosk.ui.adapter.MenuAdapter
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     private val viewModel by viewModels<MenuViewModel>()
+
+    private val menuAdapter by lazy { MenuAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +23,15 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        bindView()
         observeData()
+    }
+
+    private fun bindView() {
+        binding.menuRecyclerView.apply {
+            adapter = menuAdapter
+            layoutManager = GridLayoutManager(context, 3)
+        }
     }
 
     private fun observeData() {
@@ -32,6 +43,10 @@ class MainActivity : AppCompatActivity() {
                 3 -> setChipGroup(listOf("메론", "파인애플")) // 과일
                 4 -> setChipGroup(listOf("술", "음료수")) // 주류
             }
+        }
+
+        viewModel.menuListLiveData.observe(this) {
+            menuAdapter.submitList(it)
         }
     }
 

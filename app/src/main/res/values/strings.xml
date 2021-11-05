@@ -2,8 +2,8 @@
     <string name="app_name">kiosk</string>
 
     <string name="life_signature">인쌩 시그니처</string>
-    <string name="main_menu">메인메뉴</string>
-    <string name="alcoholic">주류</string>
-    <string name="drinks">음료</string>
-    <string name="additional_menus">추가메뉴</string>
+    <string name="special_menu">인쌩 특별메뉴</string>
+    <string name="normal_menu">일반 메뉴</string>
+    <string name="fruit_menu">과일 메뉴</string>
+    <string name="drinks">주류</string>
 </resources>
